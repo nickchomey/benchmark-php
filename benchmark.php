@@ -165,7 +165,8 @@ function test_mysql(&$result, $settings)
     $result['sysinfo']['mysql_version'] = $arr_row['version'];
     $result['benchmark']['mysql_query_version'] = timer_diff($timeStart) . ' sec.';
 
-    $query = "SELECT BENCHMARK(1000000, AES_ENCRYPT('hello', UNHEX('F3229A0B371ED2D9441B830D21A390C3')));";
+    //$query = "SELECT BENCHMARK(1000000, AES_ENCRYPT('hello', UNHEX('F3229A0B371ED2D9441B830D21A390C3')));";
+    $query = "SELECT BENCHMARK(10000000, AES_ENCRYPT(‘hello’, RAND()));";
     mysqli_query($link, $query);
     $result['benchmark']['mysql_query_benchmark'] = timer_diff($timeStart) . ' sec.';
 
